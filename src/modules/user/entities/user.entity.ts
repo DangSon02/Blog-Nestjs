@@ -22,7 +22,7 @@ export class User {
   @Column({ name: 'PASSWORD' })
   password: string;
 
-  @Column({ name: 'REFRESH_TOKEN' })
+  @Column({ name: 'REFRESH_TOKEN', default: null })
   refreshToken: string;
 
   @Column({ name: 'STATUS', default: 1 })

@@ -7,5 +7,7 @@ export class RegisterUserDto {
 
   password: string;
 
+  refreshToken: string;
+
   status: number;
 }

@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Patch,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
@@ -12,15 +13,16 @@ import { User } from './entities/user.entity';
 import { AuthGuard } from '../auth/auth.guard';
 
 import { UpdateUserDto } from './dto/update-user.dto';
+import { PaginationDTO } from './dto/pagination.dto';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(AuthGuard)
+  //@UseGuards(AuthGuard)
   @Get('get-all-user')
-  async findAllUser(): Promise<User[]> {
-    return this.userService.findAllUser();
+  async findAllUser(@Query() query: PaginationDTO): Promise<User[]> {
+    return this.userService.findAllUser(query);
   }
 
   @UseGuards(AuthGuard)
